@@ -1,0 +1,13 @@
+<header class="navbar navbar-fixed-top">
+  <div class="container">
+    <%= link_to "Clock+", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="showcaseNav"><%= link_to "Showcase", root_path %></li>
+        <li class="mailingNav"><%= mail_to "s3656432@student.rmit.edu.au" do %>
+          <span>Contact Us</span>
+        <% end %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

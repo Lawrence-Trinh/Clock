@@ -1,0 +1,70 @@
+<div class="myCountry">
+    <% @country = Timezone.where(country: myCountry.country).first %>
+    <% @country_time = Time.now.in_time_zone(@country.offset) %>
+
+    <div class="countryTitle column">
+        <p class="countryName"><%= myCountry.country %></p>
+
+        <% @local_ahead_time_diff_decimal = (@local_time.utc_offset - @country_time.utc_offset)/60.0/60.0%2 %>
+        <% @local_ahead_time_diff = (@local_time.utc_offset - @country_time.utc_offset)/60/60 %>
+
+        <% @country_ahead_time_diff_decimal = (@country_time.utc_offset - @local_time.utc_offset)/60.0/60.0%2 %>
+        <% @country_ahead_time_diff = (@country_time.utc_offset - @local_time.utc_offset)/60/60 %>
+
+        <% if @local_time.to_date > @country_time.to_date %>
+            <% if @local_ahead_time_diff_decimal == 0 || @local_ahead_time_diff_decimal == 1 %>
+                <p>-<%= @local_ahead_time_diff %>h</p>
+            <% else %>
+                <p>-<%= @local_ahead_time_diff %>h30m</p>
+            <% end %>
+        <% elsif @local_time.to_date < @country_time.to_date %>
+            <% if @country_ahead_time_diff_decimal == 0 || @country_ahead_time_diff_decimal == 1 %>
+                <p>+<%= @country_ahead_time_diff %></p>
+            <% else %>
+                <p>+<%= @country_ahead_time_diff %>h30m</p>
+            <% end %>
+        <% else %>
+            <% if @local_time.hour > @country_time.hour %>
+                <% if @local_ahead_time_diff_decimal == 0 || @local_ahead_time_diff_decimal == 1 %>
+                    <p>-<%= @local_ahead_time_diff %>h</p>
+                <% else %>
+                    <p>-<%= @local_ahead_time_diff %>h30m</p>
+                <% end %>
+            <% elsif @local_time.hour < @country_time.hour %>
+                <% if @country_ahead_time_diff_decimal == 0 || @country_ahead_time_diff_decimal == 1 %>
+                    <p>+<%= @country_ahead_time_diff %>h</p>
+                <% else %>
+                    <p>+<%= @country_ahead_time_diff %>h30m</p>
+                <% end %>
+            <% end %>
+        <% end %>
+
+    </div>
+    <div class="countryInfo column">
+
+
+        <%= link_to "X", country_list_path(myCountry), method: :delete %>
+
+        <div class="toggle24hr">
+            <%= Time.now.in_time_zone(@country.offset).to_s(:time) %>
+        </div>
+        <div class="toggle12hr">
+            <%= Time.now.in_time_zone(@country.offset).strftime("%I:%M %p") %>
+        </div>
+
+
+        <% if @local_time.to_date > @country_time.to_date %>
+            Yesterday
+            <%= render "status", :country_time => @country_time %>
+        <% elsif @local_time.to_date < @country_time.to_date %>
+            Tomorrow
+            <%= render "status", :country_time => @country_time %>
+        <% else %>
+            Today
+            <%= render "status", :country_time => @country_time %>
+        <% end %>
+
+
+    </div>
+</div>
+<hr>

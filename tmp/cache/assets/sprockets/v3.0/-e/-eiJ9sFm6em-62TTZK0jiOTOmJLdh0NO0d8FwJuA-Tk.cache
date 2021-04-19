@@ -1,0 +1,18 @@
+I"m(function() {
+  $(document).on("turbolinks:load", function() {
+    $('12hr').hide();
+    return $('24hr').hide();
+  });
+
+  $(document).on('change', "24hr-toggle", function() {
+    if ($(this).is(":checked")) {
+      $('.12hr').hide();
+      return $('.24hr').hide();
+    } else {
+      $('.12hr').hide();
+      return $('.24hr').hide();
+    }
+  });
+
+}).call(this);
+:ET

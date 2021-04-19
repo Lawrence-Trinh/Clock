@@ -1,0 +1,30 @@
+<h1>Clock+</h1>
+<h2>Clock+ built by Lawrence Trinh | s3656432@student.rmit.edu.au | 80+ | Tutorial Group 8 (Monday 08:30AM)</h2>
+<div class="row">
+  <div class="left column">
+    <p><span class="green dot"></span> <span>Business Time</span></p>
+    <p><span class="yellow dot"></span> <span>Business OverTime</span></p>
+    <p><span class="red dot"></span> <span>Personal Time</span></p>
+    <p><span class="sleep dot"></span> <span>Sleeping Time</span></p>
+  </div>
+  <div class="centre column">
+    <% @myCountries.each do |myCountry|%>
+      <%= render "myCountries", :myCountry => myCountry %>
+    <% end %>
+    <% if @myCountries.length == 0  %>
+      <p class="noCountries"> Click + below to add a country </p>
+    <% end %>
+    <div class="newCountry">
+      <%= link_to "+", new_country_list_path %>
+    </div>
+  </div>
+  <div class="right column btn-group btn-group-toggle" data-toggle="buttons">
+    <p>Color Theme</p>
+    <div class="theme_row">
+      <input type="radio" class="radioTheme" name="theme" id="greyTheme" checked/><span>Grey</span>
+      <input type="radio" class="radioTheme" name="theme" id="darkTheme"/><span>Dark</span>
+      <input type="radio" class="radioTheme" name="theme" id="lightTheme"/><span>Light</span>
+    </div>
+    <%= check_box_tag("24hr-toggle") %> 24-Hour Clock
+  </div>
+</div>

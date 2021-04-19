@@ -1,0 +1,30 @@
+I"X(function() {
+  $(document).on("turbolinks:load", function() {
+    $('.toggle24hr').hide();
+    return document.documentElement.setAttribute('data-theme', 'grey');
+  });
+
+  $(document).on("change", "#24hr-toggle", function() {
+    if ($(this).is(":checked")) {
+      $('.toggle12hr').hide();
+      return $('.toggle24hr').show();
+    } else {
+      $('.toggle12hr').show();
+      return $('.toggle24hr').hide();
+    }
+  });
+
+  $(document).on('change', '.radioTheme', function() {
+    if ($("#darkTheme").is(":checked")) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    if ($("#lightTheme").is(":checked")) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    if ($("#greyTheme").is(":checked")) {
+      return document.documentElement.setAttribute('data-theme', 'grey');
+    }
+  });
+
+}).call(this);
+:ET

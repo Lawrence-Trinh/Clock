@@ -1,0 +1,9 @@
+<% if country_time.hour >= 9 && country_time.hour < 18 %>
+    <span class="green dot"></span>
+<% elsif country_time.hour >= 18 && country_time.hour < 20 %>
+    <span class="yellow dot"></span>
+<% elsif country_time.hour >= 8 && country_time.hour < 9 || country_time.hour >= 20 && country_time.hour < 23 %>
+    <span class="red dot"></span>
+<% else %>
+    <span class="sleep dot"></span>
+<% end %>

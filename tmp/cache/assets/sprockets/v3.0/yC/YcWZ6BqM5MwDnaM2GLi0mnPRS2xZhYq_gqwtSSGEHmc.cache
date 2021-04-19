@@ -1,0 +1,31 @@
+I"ç(function() {
+  var switchTheme, toggleSwitch;
+
+  $(document).on("turbolinks:load", function() {
+    return $('.24hr').hide();
+  });
+
+  $(document).on("change", "#time-toggle", function() {
+    if ($(this).is(":checked")) {
+      $('.12hr').hide();
+      return $('.24hr').show();
+    } else {
+      $('.12hr').show();
+      return $('.24hr').hide();
+    }
+  });
+
+  toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+  switchTheme = function(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  };
+
+  toggleSwitch.addEventListener('change', switchTheme, false);
+
+}).call(this);
+:ET

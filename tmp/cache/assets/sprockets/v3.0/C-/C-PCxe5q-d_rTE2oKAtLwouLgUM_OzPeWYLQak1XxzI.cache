@@ -1,0 +1,50 @@
+I"(function() {
+  var currentTheme, switchTheme, toggleSwitch;
+
+  $(document).on("turbolinks:load", function() {
+    return $('.24hr').hide();
+  });
+
+  $(document).on("change", "#24hr-toggle", function() {
+    if ($(this).is(":checked")) {
+      $('.12hr').hide();
+      return $('.24hr').show();
+    } else {
+      $('.12hr').show();
+      return $('.24hr').hide();
+    }
+  });
+
+  $(document).on("change", "#theme-switch", function() {
+    if ($(this).is(":checked")) {
+      return alert("Dark");
+    } else {
+      return alert("Light");
+    }
+  });
+
+  toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+  currentTheme = localStorage.getItem('theme');
+
+  switchTheme = function(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  if (localStorage.getItem('theme')) {
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+    if (localStorage.getItem('theme') === 'dark') {
+      toggleSwitch.checked = true;
+    }
+  }
+
+  toggleSwitch.addEventListener('change', switchThem, false);
+
+}).call(this);
+:ET

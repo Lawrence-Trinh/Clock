@@ -1,0 +1,360 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] {
+  --background-color: black;
+  --card-bg-color: #1a1a1a;
+  --font-color: #bebebe;
+  --hover-font-color: #d8d8d8;
+  --green-color: #47F047;
+  --hover-green-color: #1F9C1F;
+}
+
+[data-theme="light"] {
+  --background-color: #fffefc;
+  --card-bg-color: #cecdcd;
+  --font-color: #5d5d5d;
+  --hover-font-color: #373737;
+  --green-color: #1F9C1F;
+  --hover-green-color: #187c18;
+}
+
+[data-theme="grey"] {
+  --background-color: #2c2f33;
+  --card-bg-color: #383c41;
+  --font-color: #eeeeee;
+  --hover-font-color: #fbfbfb;
+  --green-color: #47F047;
+  --hover-green-color: #1F9C1F;
+}
+
+/* Universal */
+html, body {
+  overflow-x: hidden;
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding-top: 60px;;
+}
+
+.center {
+  text-align: center;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+// Header (_header.html.erb)
+.navbar.navbar-fixed-top {
+  height: 50px;
+  border: none;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: var(--font-color);
+  letter-spacing: -1px;
+  padding-top: 7.5px;
+
+  &:hover {
+    color: var(--hover-font-color);
+    text-decoration: none;
+  }
+}
+
+.nav.navbar-nav.navbar-right>.showcaseNav>a {
+  color: var(--background-color);
+  background-color: var(--green-color);
+  height: 40px;
+  border-radius: 4px;
+  margin-top: 5px;
+  line-height: .75;
+  text-align: center;
+}
+
+.mailingNav>a {
+  color: var(--green-color);
+}
+
+// Footer (_footer.html.erb)
+.footer {
+  height: auto; // Replace with the height your footer should be
+  width: 100%; // Don't change
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  bottom: 0pt;
+  left: 0pt;
+  text-align: center;
+  color: $gray-medium-light;
+  letter-spacing: -1px;
+  padding-top: 20px;
+  color: var(--font-color);
+}
+
+.footerleft.column, .footerright.column {
+  height: auto;
+}
+
+.footerleft.column {
+  text-align: left;
+  padding-left: 100px;
+  width: 50%;
+}
+
+.footerright.column {
+  text-align: right;
+  padding-right: 100px;
+  width: 50%;
+}
+
+.footerright.column>a {  
+  padding: 5px;
+  font-size: 30px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.footerright.column>a:hover, .footerright.column>a:focus, .footerright.column>a:focus {
+  opacity: 0.8;
+  color: white;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+/*====== Index Styling (index.html.erb) ======*/
+.row {
+  margin: 0;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left.column {
+  padding-top: 150px;
+  padding-left: 20%;
+}
+
+.centre.column {
+  background-color: var(--card-bg-color);
+  height: auto;
+  min-height: 312px;
+  text-align: center;
+}
+
+.centre.column>form {
+  text-align: center;
+}
+
+.centre.column>form>.form-control, .centre.column>form>p {
+  margin-bottom: 100px;
+}
+
+.centre.column>form>a {
+  float: left;
+  color: var(--green-color);
+  padding: 6px 12px;
+}
+
+.nav.navbar-nav.navbar-right>.mailingNav>a:hover,
+.nav.navbar-nav.navbar-right>.mailingNav>a:focus,
+.nav.navbar-nav.navbar-right>.mailingNav>a:active,
+.centre.column>form>a:hover, 
+.centre.column>form>a:active,
+.centre.column>form>a:focus {
+  color: var(--hover-green-color);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.centre.column>form>.btn.btn-primary {
+  float: right;
+  background-color: var(--green-color);
+  color: var(--card-bg-color);
+  border: none;
+}
+
+.nav.navbar-nav.navbar-right>.showcaseNav>a:hover,
+.nav.navbar-nav.navbar-right>.showcaseNav>a:active,
+.nav.navbar-nav.navbar-right>.showcaseNav>a:focus,
+.centre.column>form>.btn.btn-primary:hover,
+.centre.column>form>.btn.btn-primary:active,
+.centre.column>form>.btn.btn-primary:focus {
+  background-color: var(--hover-green-color);
+  text-decoration: none;
+}
+
+.centre.column>hr {
+  margin: 5px 0;
+}
+
+.right.column {
+  padding-top: 150px;
+  padding-left: 3%;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.green.dot {
+  background-color: var(--green-color);
+}
+
+.yellow.dot {
+  background-color: #F09C47;
+}
+
+.red.dot {
+  background-color: #F04747;
+}
+
+.sleep.dot {
+  box-shadow: 1.5px 1.5px 0 0 #D0D5D2;
+}
+
+.theme_row {
+  margin-bottom: 15px;
+}
+
+.theme_row>input[type="radio"] {
+  margin-right: 5px;
+}
+
+.theme_row>span {
+  margin-right: 10px;
+}
+
+.countryTitle.column {
+  width: 50%;
+  height: 100px;
+  text-align: left;
+}
+
+.countryName {
+  line-height: 1.5;
+  font-size: 32px;
+  margin: auto;
+  height: 45px;
+}
+
+.countryInfo.column {
+  width: 50%;
+  text-align: right;
+  height: 100px;
+}
+
+.countryInfo.column>a {
+  color: transparent;
+}
+
+.countryInfo.column>a:hover, .countryInfo>a:active,.countryInfo>a:focus {
+  text-decoration: none;
+  color: grey;
+}
+
+.toggle12hr, .toggle24hr {
+  font-size: 24px;
+}
+
+.myCountry {
+  height: 100px;
+}
+
+.myCountry:hover {
+  .countryInfo.column>a {
+    color: var(--font-color);
+  }
+}
+
+.newCountry {
+  text-align: center;
+}
+
+.newCountry>a {
+  color: var(--font-color);
+  font-size: 32px;
+}
+
+.newCountry>a:hover, .newCountry>a:active,.newCountry>a:focus {
+  text-decoration: none;
+  color: grey;
+}
+
+.noCountries {
+  margin: 100px 0;
+}

@@ -1,0 +1,28 @@
+<h1>Clock+</h1>
+
+<div class="row">
+  <div class="left column">
+    <p><span class="green dot"></span> <span>Business Time</span></p>
+    <p><span class="yellow dot"></span> <span>Business OverTime</span></p>
+    <p><span class="red dot"></span> <span>Personal Time</span></p>
+    <p><span class="sleep dot"></span> <span>Sleeping Time</span></p>
+  </div>
+  <div class="centre column">
+    <%= form_for(@countryList, url: country_list_index_path) do |f| %>
+      <%= f.text_field :country, as: :search, data:
+          {autocomplete_source: @timezones}, class: "form-control" %>
+      <p> Enter Country/Timezone Above </p>
+      <%= link_to("Cancel", root_path) %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="right column btn-group btn-group-toggle" data-toggle="buttons">
+    <p>Color Theme</p>
+    <div class="theme_row">
+      <input type="radio" class="radioTheme" name="theme" id="greyTheme" checked/><span>Grey</span>
+      <input type="radio" class="radioTheme" name="theme" id="darkTheme"/><span>Dark</span>
+      <input type="radio" class="radioTheme" name="theme" id="lightTheme"/><span>Light</span>
+    </div>
+    <%= check_box_tag("24hr-toggle") %> 24-Hour Clock
+  </div>
+</div>

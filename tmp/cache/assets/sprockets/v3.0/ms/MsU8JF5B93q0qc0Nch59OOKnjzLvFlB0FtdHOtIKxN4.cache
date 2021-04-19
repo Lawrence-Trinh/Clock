@@ -1,0 +1,22 @@
+I"Þ(function() {
+  $(document).on("turbolinks:load", function() {
+    $('.24hr').hide();
+    return $('.num-content').hide();
+  });
+
+  $(document).on("change", "#24hr-toggle", function() {
+    if ($(this).is(":checked")) {
+      $('.12hr').hide();
+      return $('.24hr').show();
+    } else {
+      $('.12hr').show();
+      return $('.24hr').hide();
+    }
+  });
+
+  $(document).on('change', '.radiobtnfk', function() {
+    return alert($(this).is(":active"));
+  });
+
+}).call(this);
+:ET
